@@ -42,6 +42,16 @@ function Git-Push() {
     git push -u origin main
 }
 
+
+function Git-Pull() {
+    git pull
+}
+
+
+function Git-Log() {
+    git log
+}
+
 Set-Alias -Name gs -Value Git-Status
 
 # Set-Alias -Name add -Value Git-Add-All
@@ -50,3 +60,5 @@ Set-Alias -Name restore -Value Git-Restore
 
 Set-Alias -Name commit -Value Git-Commit
 Set-Alias -Name push -Value Git-Push
+Set-Alias -Name pull -Value Git-Pull
+Set-Alias -Name log -Value Git-Log
