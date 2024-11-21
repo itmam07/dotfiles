@@ -14,7 +14,7 @@ cyan='#8be9fd'
 green='50fa7b'
 
 i3lock \
-  --image=/home/itmam/.dotfiles/wallpapers/.config/wallpapers/collection/ \
+  --image=/home/itmam/dotfiles/wallpapers/.config/wallpapers/collection/ \
   # --slideshow-interval=10 \
   # --slideshow-random-selection \
   --insidever-color=$selection$alpha \
