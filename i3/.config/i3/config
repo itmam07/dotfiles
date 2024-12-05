@@ -44,13 +44,13 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 bindsym $mod+F9 exec ~/.config/i3/scripts/toggle_projector.sh 
 
 # powerprofiles
-bindsym $alt+F5 exec ~/.config/i3/scripts/switch_power_profile.sh
+bindsym $mod+F5 exec ~/.config/i3/scripts/switch_power_profile.sh
 
 # flameshot
 bindsym $mod+Shift+s exec flameshot gui
 
 # powermenu 
-bindsym $mod+l exec ~/.config/rofi/powermenu/type-1/powermenu.sh 
+bindsym $mod+l exec ~/.config/rofi/powermenu/type-3/powermenu.sh 
 
 # start a terminal
 bindsym $mod+Return exec alacritty 
@@ -59,7 +59,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+w kill
 
 # start rofi
-bindsym $mod+space exec ~/.config/rofi/launchers/type-7/launcher.sh
+bindsym $mod+space exec ~/.config/rofi/launchers/type-6/launcher.sh
 
 # change focus
 # bindsym $mod+j focus left

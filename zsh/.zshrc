@@ -32,6 +32,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 export TERMINAL=alacritty
 export PATH=$PATH:/home/itmam/.dotnet
+export PATH=$PATH:/usr/local/bin
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
@@ -39,3 +40,15 @@ export PATH=$PATH:/home/itmam/.dotnet
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste up-line-or-search down-line-or-search expand-or-complete accept-line push-line-or-edit)
 
 eval "$(starship init zsh)"
+
+# utils
+# alias la="ls -la"
+alias usb="lsblk"
+alias drive-mount="rclone mount google-drive: ~/drive --exclude '/robotics/**' &"
+alias drive-sync="rclone sync google-drive:/ /home/itmam/drive/ --exclude '/robotics/**'"
+alias drive-sync-local="rclone sync /home/itmam/drive google-drive:/ --exclude '/robotics/**'"
+
+# git aliases
+alias add="git add"
+alias commit="git commit -m"
+
