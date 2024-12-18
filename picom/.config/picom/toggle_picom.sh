@@ -1,13 +1,14 @@
 #!/bin/bash
 
-if pgrep -x picom  > /dev/null
+if pgrep -x picom > /dev/null
 then
 pkill picom
 exit
 fi
 
-if ! pgrep -x picom 
+if ! pgrep -x picom > /dev/null
+ 
 then
-picom -b --config ~/.config/picom/picom.conf > /dev/null
+picom --animations -b > /dev/null
 exit
 fi
