@@ -18,7 +18,7 @@ font pango:JetBrains Mono Nerd Font 8
 # ### AUTOSTART APPS ###
 # ######################
 exec --no-startup-id dex --autostart --environment i3
-#exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
+# exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3lock/lock-win.sh 
 exec --no-startup-id picom --animations -b 
 exec --no-startup-id nm-applet
@@ -143,34 +143,22 @@ bindsym $mod+Shift+7 exec "i3-msg move container to workspace 7, workspace 7"
 bindsym $mod+Shift+8 exec "i3-msg move container to workspace 8, workspace 8"
 bindsym $mod+Shift+9 exec "i3-msg move container to workspace 9, workspace 9"
 bindsym $mod+Shift+0 exec "i3-msg move container to workspace 10, workspace 10"
-# bindsym $mod+Shift+1 move container to workspace number $ws1
-# bindsym $mod+Shift+2 move container to workspace number $ws2
-# bindsym $mod+Shift+3 move container to workspace number $ws3
-# bindsym $mod+Shift+4 move container to workspace number $ws4
-# bindsym $mod+Shift+5 move container to workspace number $ws5
-# bindsym $mod+Shift+6 move container to workspace number $ws6
-# bindsym $mod+Shift+7 move container to workspace number $ws7
-# bindsym $mod+Shift+8 move container to workspace number $ws8
-# bindsym $mod+Shift+9 move container to workspace number $ws9
-# bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-# bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+c exec "i3-msg exit"
+# bindsym $mod+Shift+c exec "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
+        # bindsym j resize shrink width 10 px or 10 ppt
+        # bindsym k resize grow height 10 px or 10 ppt
+        # bindsym l resize shrink height 10 px or 10 ppt
+        # bindsym odiaeresis resize grow width 10 px or 10 ppt
 
-        bindsym Right resize shrink width 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Left resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -179,12 +167,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# misc config
 gaps inner 5
 gaps outer 0
-# for_window [class="^.*"] border pixel 0
 default_border pixel 0
 default_floating_border pixel 0
 for_window [class="pavucontrol"] floating enable 
+for_window [class="gnome-calculator"] floating enable 
 for_window [class="Blueman-manager"] floating enable 
 for_window [window_role="pop-up"] floating enable 
 
