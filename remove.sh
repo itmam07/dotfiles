@@ -1,40 +1,39 @@
 #!/bin/bash
 
-# Define the dotfiles directory and the target directory
+# Define the dotfiles directory
 DOTFILES_DIR="$HOME/dotfiles"
-TARGET_DIR="$HOME"
 
 # Ensure the dotfiles directory exists
 if [ ! -d "$DOTFILES_DIR" ]; then
-    echo "Directory $DOTFILES_DIR does not exist. Exiting..."
+    echo "❌ Error: Directory $DOTFILES_DIR does not exist. Exiting..."
     exit 1
 fi
 
 # Check if `stow` is installed
 if ! command -v stow &>/dev/null; then
-    echo "GNU Stow is not installed. Please install it first."
-    exit 1
+    echo "🛠️ Installing GNU Stow..."
+    sudo pacman -S --noconfirm stow
 else
-    echo "GNU Stow is installed."
+    echo "✅ GNU Stow is already installed."
 fi
 
-# Unstow all subdirectories (packages) inside dotfiles
-echo "Unstowing all packages from $DOTFILES_DIR..."
+echo "🚀 Removing stowed dotfiles..."
 
-# Loop through each subdirectory in dotfiles and unstow it individually
-for package in "$DOTFILES_DIR"/*/; do
-    # Skip if it's not a directory
-    if [ ! -d "$package" ]; then
-        continue
-    fi
-    
-    # Get the directory name (package name)
-    package_name=$(basename "$package")
-    
-    # Unstow the package from the target directory
-    echo "Unstowing package: $package_name"
-    stow -D -v --dir="$DOTFILES_DIR" --target="$TARGET_DIR" "$package_name"
-done
+# Unstow everything under ~/.config
+if [ -d "$DOTFILES_DIR/config" ]; then
+    echo "📂 Unstowing config files from ~/.config"
+    stow -v -D -t "$HOME/.config" config
+fi
 
-echo "All packages unstowed successfully."
+# Unstow everything under ~/.themes
+if [ -d "$DOTFILES_DIR/themes" ]; then
+    echo "🎨 Unstowing themes from ~/.themes"
+    stow -v -D -t "$HOME/.themes" themes
+fi
+
+# Unstow home directory files like .zshrc
+echo "🏠 Unstowing home directory files..."
+stow -v -D -t "$HOME" zsh starship
+
+echo "✅ All dotfiles successfully unstowed!"
 

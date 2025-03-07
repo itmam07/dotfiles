@@ -2,10 +2,10 @@
 
 ### Installation
 
-This is all you need.
+This is all you need to do:
 
 ```
 git clone git@github.com:itmam07/dotfiles.git
 cd dotfiles
-stow */
+sh install.sh
 ```
