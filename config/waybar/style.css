@@ -1,0 +1,129 @@
+* {
+    font-family: "JetBrains Mono Nerd Font";
+    font-weight: bold; 
+    font-size: 13px;
+}
+
+#waybar {
+    background: #2E3440;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+tooltip {
+    background: #171717;
+    color: #A1BDCE;
+    font-size: 8px;
+    border-radius: 7px;
+}
+
+#workspaces {
+    background: rgba(23, 23, 23, 0.0);
+    padding-left: 4px;
+    transition: 0.2s ease;
+}
+
+#workspaces button.active {
+    background: rgba(23, 23, 23, 0.0);
+    color: lightgreen;
+    font-weight: bold; 
+    padding-right: 4px; 
+}
+
+#tray menu * {
+    color: #d08770;
+}
+
+#network {
+    color: #A1BDCE;
+}
+
+#pulseaudio {
+    color: #6F8FDB;
+    background:  rgba(22, 19, 32, 0.0);
+}
+
+#backlight {
+    color: #2096C0;
+    background: rgba(23, 23, 23, 0.0);
+}
+
+#battery {
+    color: lightgreen; 
+    background:  rgba(23, 23, 23, 0.0);
+}
+
+#battery.charging, #battery.plugged {
+    color: lightgreen;
+}
+
+#battery.critical:not(.charging) {
+    color: red;
+}
+
+#clock {
+    color: #A1BDCE;
+    margin-right: 2px;
+}
+
+#cpu {
+    color: #915CAF;
+}
+
+#memory {
+    color: #E4C9AF;
+}
+
+#cava {
+    color: #a6d189;
+}
+
+/* slider */
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+    background: #A1BDCE;
+    box-shadow: none;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+    min-width: 80px;
+    min-height: 10px;
+    border-radius: 8px;
+    background: #343434;
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+    border-radius: 8px;
+    background-color: #2096C0;
+}
+
+/* misc */
+
+#custom-spotify {
+    color: #E8EDF0;
+    background:  rgba(23, 23, 23, 0.0);
+    margin: 0px 0px 0px 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+    opacity: 0.1
+}
+
+#custom-arch {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+#custom-expand {
+    min-width: 20px;
+    color: #A1BDCE;
+    font-size: 16px;
+}
+
+#group-minimized {
+    border-left: solid;
+    border-left-width: 0.5;
+}
+

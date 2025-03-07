@@ -11,7 +11,8 @@
 ############################################################
 #                    omz config stuff                      #
 ############################################################
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH_DISABLE_COMPFIX=true
+export ZSH="/home/itmam/.oh-my-zsh"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 plugins=(git sudo zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
@@ -23,10 +24,14 @@ source $ZSH/oh-my-zsh.sh
 ############################################################
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export PATH="$PATH:/home/itmam/.dotnet"
-export PATH="$PATH:/home/itmam/.dotnet/tools"
+export PATH="/home/itmam/.dotnet:$PATH"
+export PATH="/home/itmam/.dotnet/tools:$PATH"
 export PATH="$PATH:/usr/local/bin"
+export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=kde
+export DOTNET_ROOT="/home/itmam/.dotnet"
 
+unset QT_STYLE_OVERRIDE
 
 ############################################################
 #                         ALIASES                          #
@@ -48,9 +53,10 @@ alias usb="lsblk"
 alias top="btop"
 alias google="google-chrome-stable"
 alias grep="grep --color=auto"
+alias mem="ncdu --color=dark"
 
 # env
-alias path="echo -e ${PATH//:/\\n}"
+alias path="echo -e ${PATH}"
 
 # fancy commands
 alias diskusage="free -m -l -t"
@@ -58,3 +64,7 @@ alias inet="ip -c -br -f inet a | grep UP"
 alias startdocker="systemctl start docker"
 
 eval "$(starship init zsh)"
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
