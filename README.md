@@ -2,7 +2,7 @@
 
 ### Hypr Arch
 
-![hypr-arch](https://)
+![hypr-arch](https://github.com/itmam07/dotfiles/blob/8a92f39ddeaece2f2ace8aa6cc06db5337433d7a/2025-03-08_09-24-56.png)
 
 ### Installation
 
