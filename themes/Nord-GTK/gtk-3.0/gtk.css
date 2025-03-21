@@ -4423,3 +4423,19 @@ window.background.chromium {
       background-color: alpha(@theme_button_decoration_hover_breeze,0.5); }
     #MozillaGtkWidget scrollbar slider:focus {
       background-color: alpha(@theme_button_decoration_focus_breeze,0.5); }
+
+ /* Dark Menu Bar */
+.menu {
+    background-color: #2E3440; /* Dark background color */
+    color: #ECEFF4;            /* Light text color */
+}
+
+.menuitem {
+    background-color: #3B4252; /* Dark background for items */
+    color: #ECEFF4;            /* Light text color */
+}
+
+.menuitem:selected {
+    background-color: #434C5E; /* Highlighted item background */
+}
+

@@ -23,6 +23,7 @@ echo "🚀 Stowing dotfiles..."
 if [ -d "$DOTFILES_DIR/config" ]; then
     echo "📂 Stowing config files to ~/.config"
     stow -v -t "$HOME/.config" config
+    stow -v -t "$HOME/.config" wallpapers
 fi
 
 # Stow everything under ~/.themes
@@ -32,8 +33,9 @@ if [ -d "$DOTFILES_DIR/themes" ]; then
 fi
 
 if [ -d "$DOTFILES_DIR/zsh" ]; then
-    echo "🎨 Stowing .zshrc to ~"
+    echo "🎨 Stowing vim and zsh to ~"
     stow -v -t "$HOME" zsh 
+    stow -v -t "$HOME" vim
 fi
 
 echo "🎉 All dotfiles successfully stowed!"

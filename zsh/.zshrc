@@ -22,7 +22,7 @@ source $ZSH/oh-my-zsh.sh
 ############################################################
 #                       ENVIRONMENT                        #
 ############################################################
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERMINAL="alacritty"
 export PATH="/home/itmam/.dotnet:$PATH"
 export PATH="/home/itmam/.dotnet/tools:$PATH"
@@ -47,8 +47,9 @@ alias g="git"
 alias commit="g commit -m"
 
 # renames
+alias rf="rm -rf"
 alias p="sudo pacman"
-alias v="nvim"
+alias v="vim"
 alias usb="lsblk"
 alias top="btop"
 alias google="google-chrome-stable"
