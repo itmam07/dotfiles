@@ -27,11 +27,9 @@ tooltip {
     background: rgba(23, 23, 23, 0.0);
     color: lightgreen;
     font-weight: bold; 
-    padding-right: 4px; 
 }
 
-#tray menu * {
-    color: #d08770;
+#tray {
 }
 
 #network {
@@ -61,9 +59,13 @@ tooltip {
     color: red;
 }
 
+#battery.warning:not(.charging) {
+    color: yellow;
+}
+
 #clock {
     color: #A1BDCE;
-    margin-right: 2px;
+    padding-right: 2px;
 }
 
 #cpu {
@@ -75,7 +77,7 @@ tooltip {
 }
 
 #cava {
-    color: #a6d189;
+    color: lightblue;
 }
 
 /* slider */
@@ -100,7 +102,40 @@ tooltip {
     background-color: #2096C0;
 }
 
-/* misc */
+/* custom and grouped */
+
+#custom-gpu-temp.cool {
+    color: lightblue;
+}
+
+#custom-gpu-temp.warm {
+    color: orange;
+}
+
+#custom-gpu-temp.hot {
+    color: red;
+}
+
+#custom-cpu-temp.cool {
+    color: lightblue;
+}
+
+#custom-cpu-temp.warm {
+    color: orange;
+}
+
+#custom-cpu-temp.hot {
+    color: red;
+}
+
+#custom-spotify {
+    color: #E8EDF0;
+    background:  rgba(23, 23, 23, 0.0);
+    margin: 0px 0px 0px 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+    opacity: 0.1
+}
 
 #custom-spotify {
     color: #E8EDF0;
@@ -116,7 +151,7 @@ tooltip {
     margin-left: 10px;
 }
 
-#custom-expand {
+#custom-menu {
     min-width: 20px;
     color: #A1BDCE;
     font-size: 16px;
@@ -124,6 +159,6 @@ tooltip {
 
 #group-minimized {
     border-left: solid;
-    border-left-width: 0.5;
+    padding-right: 2px;
 }
 
