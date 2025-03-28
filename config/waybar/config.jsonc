@@ -196,6 +196,7 @@
 
     "custom/gpu-temp": {
         "format": "{}",
+        "tooltip-format": "GPU",
         "exec": "~/.config/waybar/gpu-temp.sh",
         "return-type": "json",
         "interval": 5
@@ -203,6 +204,7 @@
 
     "custom/cpu-temp": {
         "format": "{}",
+        "tooltip-format": "CPU",
         "exec": "~/.config/waybar/cpu-temp.sh",
         "return-type": "json",
         "interval": 5
