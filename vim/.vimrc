@@ -46,6 +46,7 @@ set shiftwidth=4          " Tab size
 set tabstop=4             " Spaces per tab
 set termguicolors         " Enable true colors
 set background=dark       " Ensure dark theme
+set hlsearch              " Highlight search
 colorscheme nord
 
 "==========================================
@@ -145,4 +146,3 @@ nnoremap <Leader>rg :Rg<Space>         " Search with ripgrep
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-pyright']
 nnoremap <silent> gd <Plug>(coc-definition)   " Jump to definition
 nnoremap <silent> K :call CocAction('doHover')<CR> " Show documentation
-
