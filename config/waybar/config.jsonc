@@ -114,7 +114,7 @@
     "pulseaudio": {
         "format": "{icon}{volume}%",
         "format-muted": " ",
-        "tooltip-format": "{icon} {desc} // {volume}%",
+        "tooltip-format": "{icon} // {volume}%",
         "scroll-step": 5,
         "format-icons": [" ", " ", "  "]
     },
