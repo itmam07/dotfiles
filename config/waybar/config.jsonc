@@ -39,12 +39,14 @@
 
     "cpu": {
         "format": " {usage}%",
-        "tooltip": true
+        "tooltip": true,
+        "interval": 2
     },
 
     "memory": {
         "format": " {}%",
-	    "tooltip": true
+	    "tooltip": true,
+        "interval": 2
     },
     
     "network": {
