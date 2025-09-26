@@ -2,69 +2,104 @@
     "layer": "top",
     "position": "top",
     "mod": "dock",
-    
     "margin-left": 4,
     "margin-right": 4,
     "margin-top": 3,
     "margin-bottom": 0,
-
+    "padding": 2,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
     "reload_style_on_change": true,
-
-    "modules-left": ["custom/arch", "hyprland/workspaces", "custom/spacerL", "custom/gpu-temp", "custom/spacer" ,"custom/cpu-temp", "custom/spacerL", "cava"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["group/tray","custom/spacer", "group/pulseaudio", "custom/spacer", "group/backlight", "custom/spacer", "battery", "custom/spacer", "memory", "custom/spacer", "cpu","custom/spacer", "clock", "custom/spacer"],
-
-    /* hyprland config */
-
-    "hyprland/window": {  
+    "modules-left": [
+        "custom/arch",
+        "niri/workspaces",
+        "cffi/niri-taskbar",
+        "custom/spacerL",
+        "custom/spacerL",
+        "custom/spacerL",
+        "cava",
+        "custom/playerinfo"
+    ],
+    "modules-center": [
+        "niri/window"
+    ],
+    "modules-right": [
+        "custom/cpu-temp",
+        "custom/spacer",
+        "custom/gpu-temp",
+        "custom/spacerL",
+        "group/tray",
+        "custom/spacer",
+        "group/pulseaudio",
+        "custom/spacer",
+        "group/backlight",
+        "custom/spacer",
+        "battery",
+        "custom/spacer",
+        "memory",
+        "custom/spacer",
+        "cpu",
+        "custom/spacer",
+        "clock",
+        "custom/spacer"
+    ],
+    /* window manager config */
+    "hyprland/window": {
         "format": "<span  weight='bold' >{title}</span>",
         "max-length": 50,
         "icon": true,
         "icon-size": 13
     },
-
+    "niri/window": {
+        "format": "<span  weight='bold' >{title}</span>",
+        "max-length": 55
+    },
     "hyprland/workspaces": {
         "format": "{name}:{icon}",
         "format-icons": {
             "default": "",
             "active": ""
         },
-        "tooltip": false 
+        "tooltip": false
     },
-
+    "cffi/niri-taskbar": {
+        "module_path": "/usr/lib/waybar/libniri_taskbar.so",
+        "show_all_outputs": true,
+        "icon-size": 8,
+        "apps": {
+            "signal": [
+                {
+                    "match": "\\([0-9]+\\)$",
+                    "class": "unread"
+                }
+            ]
+        }
+    },
     /* normal modules */
-
     "cpu": {
         "format": " {usage}%",
         "tooltip": true,
         "interval": 2
     },
-
     "memory": {
         "format": " {}%",
-	    "tooltip": true,
+        "tooltip": true,
         "interval": 2
     },
-    
     "network": {
         "format-wifi": "󰤥 ",
         "format-ethernet": "󰈀 ",
         "format-linked": "󰈀 ?",
         "format-disconnected": " ",
-
         "tooltip-format": "Network: <b>{essid}</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>",
         "tooltip-format-disconnected": "Hol dir internet du Bastard"
     },
-
     "tray": {
         "icon-size": 16,
         "rotate": 0,
         "spacing": 5
     },
-
     "clock": {
         "format": "{:%H:%M}  ",
         "tooltip-format": "<tt>{calendar}</tt>",
@@ -87,68 +122,95 @@
             "on-scroll-down": "shift_down"
         }
     },
-
     "battery": {
         "states": {
             "good": 95,
             "warning": 30,
             "critical": 20
         },
+        "interval": 5,
         "format": "{icon}{capacity}%",
         "format-charging": "󰂄 {capacity}%",
         "format-plugged": "󰂄 ",
-        "format-icons": ["󰂎 ", "󰁺 ", "󰁻 ", "󰁼 ", "󰁽 ", "󰁾 ", "󰁿 ", "󰂀 ", "󰂁 ", "󰂂 ", "󰁹 "]
+        "format-icons": [
+            "󰂎 ",
+            "󰁺 ",
+            "󰁻 ",
+            "󰁼 ",
+            "󰁽 ",
+            "󰁾 ",
+            "󰁿 ",
+            "󰂀 ",
+            "󰂁 ",
+            "󰂂 ",
+            "󰁹 "
+        ]
     },
-
     "backlight": {
         "format": "{icon}{percent}%",
-        "format-icons": ["󰃞 ", "󰃝 ", "󰃟 ", "󰃠 "],
+        "format-icons": [
+            "󰃞 ",
+            "󰃝 ",
+            "󰃟 ",
+            "󰃠 "
+        ],
         "scroll-step": 1,
         "min-length": 2
     },
-
     "backlight/slider": {
         "min": 5,
         "max": 100,
         "scroll-step": 1
     },
-
     "pulseaudio": {
         "format": "{icon}{volume}%",
         "format-muted": " ",
         "tooltip-format": "{icon} // {volume}%",
         "scroll-step": 5,
-        "format-icons": [" ", " ", "  "]
+        "format-icons": [
+            " ",
+            " ",
+            "  "
+        ]
     },
-
     "pulseaudio/slider": {
         "min": 0,
         "max": 100,
         "device": "pulseaudio",
         "scroll-step": 1
     },
-
     "cava": {
+        //"cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
         "framerate": 60,
-        "bars": 10,
+        "autosens": 1,
+        "sensitivity": 0.1,
+        "bars": 14,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
         "method": "pulse",
         "source": "auto",
         "stereo": true,
         "reverse": false,
         "bar_delimiter": 0,
         "monstercat": false,
-        "waves": false,
-        "noise_reduction": 0.77,
+        "waves": true,
+        "noise_reduction": 0.87,
         "input_delay": 2,
-        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "format-icons": [
+            "▁",
+            "▂",
+            "▃",
+            "▄",
+            "▅",
+            "▆",
+            "▇",
+            "█"
+        ],
         "actions": {
             "on-click-right": "mode"
         }
     },
-
     /* grouped modules */
-
-
     "group/tray": {
         "orientation": "horizontal",
         "drawer": {
@@ -156,9 +218,11 @@
             "children-class": "not-power",
             "transition-to-left": true
         },
-        "modules": ["custom/menu", "tray"]
+        "modules": [
+            "custom/menu",
+            "tray"
+        ]
     },
-
     "group/backlight": {
         "orientation": "horizontal",
         "drawer": {
@@ -167,9 +231,11 @@
             "transition-to-left": true,
             "click-to-reveal": true
         },
-        "modules": ["backlight","backlight/slider"]
+        "modules": [
+            "backlight",
+            "backlight/slider"
+        ]
     },
-
     "group/pulseaudio": {
         "orientation": "horizontal",
         "drawer": {
@@ -178,9 +244,11 @@
             "transition-to-left": true,
             "click-to-reveal": true
         },
-        "modules": ["pulseaudio","pulseaudio/slider"]
+        "modules": [
+            "pulseaudio",
+            "pulseaudio/slider"
+        ]
     },
-
     "group/power": {
         "orientation": "inherit",
         "drawer": {
@@ -195,7 +263,6 @@
         ]
     },
     /* custom modules */
-
     "custom/gpu-temp": {
         "format": "{}",
         "tooltip-format": "GPU",
@@ -203,7 +270,6 @@
         "return-type": "json",
         "interval": 5
     },
-
     "custom/cpu-temp": {
         "format": "{}",
         "tooltip-format": "CPU",
@@ -211,47 +277,39 @@
         "return-type": "json",
         "interval": 5
     },
-
     "custom/lock": {
         "format": "󰍁 ",
         "tooltip": false,
         "on-click": "hyprlock"
     },
-    
     "custom/reboot": {
         "format": "󰜉 ",
         "tooltip": false,
         "on-click": "reboot"
     },
-
     "custom/power": {
         "format": " ",
         "tooltip": false,
         "on-click": "shutdown now"
     },
-
     "custom/spacer": {
         "format": "  ",
         "tooltip": false
     },
-
     "custom/spacerL": {
         "format": "   ",
         "tooltip": false
     },
-
     "custom/arch": {
         "format": "󰣇 ",
         "tooltip": true,
         "tooltip-format": "btw"
     },
-
     "custom/menu": {
         "format": "󰅃",
         "rotate": 90,
         "tooltip": false
     },
-
     "custom/spotify": {
         "exec": "mediaplayer.py --player spotify",
         "format": " {}",
@@ -265,5 +323,16 @@
         "max-length": 25,
         "escape": true,
         "tooltip": true
+    },
+    "custom/playerinfo": {
+        "format": "{}",
+        "exec": "~/.config/waybar/playerinfo.sh",
+        "escape": true,
+        "return-type": "json",
+        "interval": 1,
+        "tooltip": true,
+        "on-click-middle": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-left": "playerctl previous"
     }
 }

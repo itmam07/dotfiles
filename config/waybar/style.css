@@ -1,13 +1,13 @@
 * {
     font-family: "JetBrains Mono Nerd Font";
-    font-weight: bold; 
-    font-size: 13px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 #waybar {
     background: #2E3440;
     border: 3px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 tooltip {
@@ -20,17 +20,39 @@ tooltip {
 #workspaces {
     background: rgba(23, 23, 23, 0.0);
     padding-left: 4px;
-    transition: 0.2s ease;
+    transition: 0.1s;
 }
 
 #workspaces button.active {
     background: rgba(23, 23, 23, 0.0);
     color: lightgreen;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
-#tray {
+#workspaces button:hover {
+    color: white;
+    background: rgba(23, 23, 23, 0.5);
+    transition-duration: 0.1s;
 }
+
+.niri-taskbar button:hover {
+    background: rgba(23, 23, 23, 0.3);
+    transition-duration: 0.1s;
+}
+
+.niri-taskbar button.focused {
+    background: rgba(23, 23, 23, 0.2);
+    background-image: linear-gradient(to top, #fff 2px, transparent 2px);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 2px;
+}
+
+.niri-taskbar button {
+    padding: 5px;
+}
+
+#tray {}
 
 #network {
     color: #A1BDCE;
@@ -38,7 +60,7 @@ tooltip {
 
 #pulseaudio {
     color: #6F8FDB;
-    background:  rgba(22, 19, 32, 0.0);
+    background: rgba(22, 19, 32, 0.0);
 }
 
 #backlight {
@@ -47,11 +69,12 @@ tooltip {
 }
 
 #battery {
-    color: lightgreen; 
-    background:  rgba(23, 23, 23, 0.0);
+    color: lightgreen;
+    background: rgba(23, 23, 23, 0.0);
 }
 
-#battery.charging, #battery.plugged {
+#battery.charging,
+#battery.plugged {
     color: lightgreen;
 }
 
@@ -130,7 +153,7 @@ tooltip {
 
 #custom-spotify {
     color: #E8EDF0;
-    background:  rgba(23, 23, 23, 0.0);
+    background: rgba(23, 23, 23, 0.0);
     margin: 0px 0px 0px 0px;
     padding-left: 1px;
     padding-right: 1px;
@@ -139,7 +162,7 @@ tooltip {
 
 #custom-spotify {
     color: #E8EDF0;
-    background:  rgba(23, 23, 23, 0.0);
+    background: rgba(23, 23, 23, 0.0);
     margin: 0px 0px 0px 0px;
     padding-left: 1px;
     padding-right: 1px;
@@ -161,4 +184,3 @@ tooltip {
     border-left: solid;
     padding-right: 2px;
 }
-
