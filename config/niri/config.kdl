@@ -78,7 +78,7 @@ layout {
 // SPAWN 
 spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
-spawn-at-startup "blueman-applet"
+// spawn-at-startup "blueman-applet"
 spawn-at-startup "hypridle"
 spawn-at-startup "hyprpaper"
 
@@ -209,6 +209,9 @@ binds {
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
+
+    // Focus the last active workspace (Alt+Tab functionality)
+    Alt+Tab { focus-workspace-previous; }
 
     // Fit all windows in current workspace to equal widths
     Mod+Tab { spawn-sh "~/.config/niri/fit-all-windows.sh"; }

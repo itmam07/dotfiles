@@ -17,10 +17,11 @@ tooltip {
     border-radius: 7px;
 }
 
-#workspaces {
-    background: rgba(23, 23, 23, 0.0);
-    padding-left: 4px;
-    transition: 0.1s;
+#workspaces button {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    transition-duration: 0.1s;
 }
 
 #workspaces button.active {
@@ -32,7 +33,6 @@ tooltip {
 #workspaces button:hover {
     color: white;
     background: rgba(23, 23, 23, 0.5);
-    transition-duration: 0.1s;
 }
 
 .niri-taskbar button:hover {

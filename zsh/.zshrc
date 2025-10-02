@@ -53,6 +53,7 @@ alias v="vim"
 alias usb="lsblk"
 alias top="btop"
 alias google="google-chrome-stable"
+alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 alias grep="grep --color=auto"
 alias mem="ncdu --color=dark"
 
