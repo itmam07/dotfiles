@@ -16,30 +16,24 @@
         "niri/workspaces",
         "cffi/niri-taskbar",
         "custom/spacerL",
-        "custom/spacerL",
-        "custom/spacerL",
         "cava",
-        "custom/playerinfo"
+        "custom/spacerL",
+        "custom/playerinfo",
+        "custom/spacerL"
     ],
     "modules-center": [
         "niri/window"
     ],
     "modules-right": [
         "custom/cpu-temp",
-        //"custom/spacer",
-        //"custom/gpu-temp",
-        "custom/spacerL",
+        "custom/spacer",
+        "cpu",
+        "custom/spacer",
         "group/tray",
         "custom/spacer",
         "group/pulseaudio",
         "custom/spacer",
-        //"group/backlight",
-        //"custom/spacer",
-        //"battery",
-        //"custom/spacer",
         "memory",
-        "custom/spacer",
-        "cpu",
         "custom/spacer",
         "clock",
         "custom/spacer"
