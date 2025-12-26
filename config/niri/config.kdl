@@ -22,7 +22,7 @@ input {
         accel-speed 0.25
     }
 
-    focus-follows-mouse max-scroll-amount="95%"
+    focus-follows-mouse //max-scroll-amount="95%"
 }
 
 
@@ -80,8 +80,8 @@ spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
 // spawn-at-startup "blueman-applet"
 spawn-at-startup "hypridle"
-spawn-at-startup "hyprpaper"
-
+//spawn-at-startup "hyprpaper"
+spawn-at-startup "swaybg -i .config/wallpapers/arch.png "
 
 // MISC
 hotkey-overlay {
@@ -105,6 +105,20 @@ window-rule {
 }
 
 window-rule {
+    match app-id="jetbrains-studio" title="^Welcome to Android Studio$"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 650; }
+}
+
+window-rule {
+    match app-id="com.example.dash"
+    open-floating true
+    default-column-width { fixed 415; }
+    default-window-height { fixed 900; }
+}
+
+window-rule {
     match app-id="kitty"
     default-column-width { proportion 0.5; }
 }
@@ -123,11 +137,13 @@ binds {
     Mod+O repeat=false { toggle-overview; }
     Mod+W repeat=false { close-window; }
 
-    // APPLICATIONS
-    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: wofi" { spawn-sh "wofi --show drun -i"; }
-    Mod+L hotkey-overlay-title="Run an Application: power menu" { spawn-sh ".config/wofi/power-menu.sh"; }
-    Mod+Y hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+    // rAPPLICATIONS
+    Mod+Return { spawn "kitty"; }
+    Mod+Space { spawn-sh "wofi --show drun -i"; }
+    Mod+Shift+T { spawn-sh "~/.config/niri/ocr.sh"; }
+    Mod+L { spawn-sh "~/.config/wofi/power-menu.sh"; }
+    Mod+Y { spawn "hyprlock"; }
+    Mod+E { spawn "nautilus"; }
 
     // VOLUME AND BRIGHTNESS
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
