@@ -14,26 +14,22 @@
     "modules-left": [
         "custom/arch",
         "niri/workspaces",
-        "cffi/niri-taskbar",
-        "custom/spacerL",
-        "cava",
-        "custom/spacerL",
-        "custom/playerinfo",
-        "custom/spacerL"
+        "cffi/niri-taskbar"
     ],
     "modules-center": [
         "niri/window"
     ],
     "modules-right": [
-        "custom/cpu-temp",
+        "custom/playerinfo-icon",
+        //"cava",
+        "custom/spacerL",
+        "group/tray",
         "custom/spacer",
         "cpu",
         "custom/spacer",
-        "group/tray",
+        "memory",
         "custom/spacer",
         "group/pulseaudio",
-        "custom/spacer",
-        "memory",
         "custom/spacer",
         "clock",
         "custom/spacer"
@@ -328,5 +324,18 @@
         "on-click-middle": "playerctl play-pause",
         "on-click-right": "playerctl next",
         "on-click-left": "playerctl previous"
+    },
+    "custom/playerinfo-icon": {
+        "format": "{}",
+        "exec": "~/.config/waybar/playerinfo-icon.sh",
+        "escape": true,
+        "return-type": "json",
+        "interval": 1,
+        "tooltip": true,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        "on-scroll-up": "playerctl position 1+",
+        "on-scroll-down": "playerctl position 1-"
     }
 }
