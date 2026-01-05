@@ -99,6 +99,7 @@ binds {
     Mod+Shift+7         { show-hotkey-overlay; }
     Mod+O repeat=false  { toggle-overview; }
     Mod+W repeat=false  { close-window; }
+    Alt+Tab             { focus-workspace-previous; }
 
     // APPLICATIONS
     Mod+Return  { spawn "kitty"; }
@@ -222,12 +223,10 @@ binds {
 
 recent-windows {
     debounce-ms 0
-    open-delay-ms 500
+    open-delay-ms 0
     binds {
-        Alt+Tab         { next-window; }
-        Alt+Shift+Tab   { previous-window; }
-        Mod+Tab         { next-window     filter="app-id"; }
-        Mod+Shift+Tab   { previous-window filter="app-id"; }
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { next-window filter="app-id"; }
     }
 }
 
