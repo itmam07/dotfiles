@@ -28,8 +28,8 @@ fi
 
 # Stow everything under ~/.themes
 if [ -d "$DOTFILES_DIR/themes" ]; then
-    echo "🎨 Stowing themes to ~/.themes"
-    stow -v -t "$HOME/.themes" themes
+    echo "🎨 Stowing themes to ~/.local/share/themes"
+    stow -v -t "$HOME/.local/share/themes" themes
 fi
 
 if [ -d "$DOTFILES_DIR/zsh" ]; then

@@ -15,73 +15,46 @@ input {
             layout "de,at"
         }
     }
-
     touchpad {
         tap
         natural-scroll
         accel-speed 0.25
     }
-
-    focus-follows-mouse max-scroll-amount="95%"
+    focus-follows-mouse max-scroll-amount="30%"
 }
-
-
-// OUTPUT
-/-output "eDP-1" {
-    // off
-    mode "1920x1080@120.030"
-    transform "normal"
-    position x=1280 y=0
-}
-
 
 //LAYOUT
 layout {
-    gaps 4
-
-    // center-focused-column "on-overflow"
-    // center-focused-column "never"
-    // center-focused-column "always"
+    gaps 2
 
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
-        // fixed 1920
     }
 
-    // preset-window-heights {
-    //     proportion 0.33333
-    //     proportion 0.5
-    //     proportion 0.66667
-    //     // fixed 1920
-    // }
-
-    // default-column-width { proportion 0.5; }
     default-column-width {}
 
     focus-ring {
         off
-        width 3
+        width 1
         active-color "#a9b9c5"
         inactive-color "#97a4aa"
     }
 
     border {
-        width 2
+        width 1
         active-color "#a9b9c5"
         inactive-color "#424853"
     }
 }
 
-
 // SPAWN 
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
+spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "nm-applet"
-spawn-at-startup "blueman-applet"
-spawn-at-startup "hypridle"
-spawn-at-startup "hyprpaper"
-
+// spawn-at-startup "hypridle"
+// spawn-at-startup "swaybg -i .config/wallpapers/iss.jpg"
 
 // MISC
 hotkey-overlay {
@@ -90,18 +63,24 @@ hotkey-overlay {
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-
-// ANIMATIONS
-animations {
-    // off
-    // slowdown 3.0
-}
-
-
 // WINDOW RULES
 window-rule {
     match app-id=r#"google-chrome$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+window-rule {
+    match app-id="jetbrains-studio" title="^Welcome to Android Studio$"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 650; }
+}
+
+window-rule {
+    match app-id="com.example.dash"
+    open-floating true
+    default-column-width { fixed 415; }
+    default-window-height { fixed 900; }
 }
 
 window-rule {
@@ -110,33 +89,34 @@ window-rule {
 }
 
 window-rule {
-    geometry-corner-radius 5
+    geometry-corner-radius 2
     clip-to-geometry true
     draw-border-with-background false
 }
 
+// LAYER RULES
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
 
 // BINDS
 binds {
     // MISC
-    Mod+Shift+7{ show-hotkey-overlay; }
-    Mod+O repeat=false { toggle-overview; }
-    Mod+W repeat=false { close-window; }
+    Mod+Shift+7             { show-hotkey-overlay; }
+    Mod+O   repeat=false    { toggle-overview; }
+    Mod+W   repeat=false    { close-window; }
+    Alt+Tab repeat=false    { focus-workspace-previous; }
 
     // APPLICATIONS
-    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: wofi" { spawn-sh "wofi --show drun -i"; }
-    Mod+L hotkey-overlay-title="Run an Application: power menu" { spawn-sh ".config/wofi/power-menu.sh"; }
-    Mod+Y hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
-
-    // VOLUME AND BRIGHTNESS
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    Mod+Return  { spawn "kitty"; }
+    // Mod+Space   { spawn-sh "wofi --show drun -i"; }
+    Mod+Space   { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+Shift+T { spawn-sh "~/.config/niri/ocr.sh"; }
+    // Mod+L       { spawn-sh "~/.config/wofi/power-menu.sh"; }
+    Mod+L       { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+Y       { spawn "hyprlock"; }
+    Mod+E       { spawn "nautilus"; }
 
     // WINDOW MANAGEMENT
     
@@ -207,44 +187,35 @@ binds {
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Ctrl+1 { move-window-to-workspace 1; }
-
     // Fit all windows in current workspace to equal widths
-    Mod+Tab { spawn-sh "~/.config/niri/fit-all-windows.sh"; }
+    Mod+Q   { spawn-sh "~/.config/niri/fit-all-windows.sh"; }
 
-    // The following binds move the focused window in and out of a column.
-    // If the window is alone, they will consume it into the nearby column to the side.
-    // If the window is already in a column, they will expel it out.
-    Mod+Comma { consume-or-expel-window-left; }
-    Mod+Period{ consume-or-expel-window-right; }
-    Mod+Shift+Period{ consume-or-expel-window-right; }
+    // Move browser tab to window left
+    Mod+Z   { spawn-sh "~/.config/niri/move-tab.sh"; }
 
-    // Consume one window from the right to the bottom of the focused column.
-    Mod+Ctrl+Comma  { consume-window-into-column; }
-
-    //  Expel the bottom window from the focused column to the right.
-    Mod+Ctrl+Period { expel-window-from-column; }
+    // Move windows in and out of a column.
+    Mod+Comma           { consume-or-expel-window-left; }
+    Mod+Period          { consume-or-expel-window-right; }
 
     // Mod+R { switch-preset-column-width-back; }
-    Mod+R { switch-preset-column-width; }
+    Mod+R       { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
+    Mod+Ctrl+R  { reset-window-height; }
     
-    Mod+F { maximize-column; }
+    Mod+F       { maximize-column; }
     Mod+Shift+F { expand-column-to-available-width; }
-    Mod+Ctrl+F { fullscreen-window; }
+    Mod+Ctrl+F  { fullscreen-window; }
 
     // Center columns on screen.
-    Mod+C { center-column; }
-    Mod+Ctrl+C { center-visible-columns; }
+    Mod+C       { center-column; }
+    Mod+Ctrl+C  { center-visible-columns; }
 
     // Finer width adjustments.
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Plus { set-column-width "+10%"; }
+    Mod+Minus   { set-column-width "-10%"; }
+    Mod+Plus    { set-column-width "+10%"; }
 
     Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Plus { set-window-height "+10%"; }
+    Mod+Shift+Plus  { set-window-height "+10%"; }
 
     // Floating windows
     Mod+V       { toggle-window-floating; }
@@ -252,14 +223,22 @@ binds {
 
     Mod+Shift+W { toggle-column-tabbed-display; }
 
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
-
     Mod+Shift+S { screenshot; }
-    Mod+Ctrl+S { screenshot-screen; }
-    Mod+Alt+S { screenshot-window; }
+    Mod+Ctrl+S  { screenshot-screen; }
+    Mod+Alt+S   { screenshot-window; }
+
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-    Mod+Shift+E { quit; }
+    Mod+Shift+E     { quit; }
     Ctrl+Alt+Delete { quit; }
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Shift+P     { power-off-monitors; }
 }
+
+recent-windows {
+    debounce-ms 0
+    open-delay-ms 0
+    binds {
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { next-window filter="app-id"; }
+    }
+}
+

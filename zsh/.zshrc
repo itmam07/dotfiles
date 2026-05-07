@@ -27,11 +27,15 @@ export TERMINAL="alacritty"
 export PATH="/home/itmam/.dotnet:$PATH"
 export PATH="/home/itmam/.dotnet/tools:$PATH"
 export PATH="$PATH:/usr/local/bin"
-export QT_STYLE_OVERRIDE=kvantum
-export QT_QPA_PLATFORMTHEME=kde
 export DOTNET_ROOT="/home/itmam/.dotnet"
+export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"
 
-unset QT_STYLE_OVERRIDE
+# Android Studio SDK
+export PATH="$PATH:$HOME/flutter/bin"
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+export PATH="$PATH:$ANDROID_HOME/emulator" 
 
 ############################################################
 #                         ALIASES                          #
@@ -53,6 +57,7 @@ alias v="vim"
 alias usb="lsblk"
 alias top="btop"
 alias google="google-chrome-stable"
+alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 alias grep="grep --color=auto"
 alias mem="ncdu --color=dark"
 
@@ -63,6 +68,7 @@ alias path="echo -e ${PATH}"
 alias diskusage="free -m -l -t"
 alias inet="ip -c -br -f inet a | grep UP"
 alias startdocker="systemctl start docker"
+alias windows="cd ~/windows && docker-compose up -d && sleep 5 && nohup remmina -c ~/.local/share/remmina/group_rdp_windows_127-0-0-1.remmina > /dev/null 2>&1 &"
 
 eval "$(starship init zsh)"
 
