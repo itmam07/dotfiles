@@ -20,12 +20,12 @@ input {
         natural-scroll
         accel-speed 0.25
     }
-    focus-follows-mouse //max-scroll-amount="95%"
+    focus-follows-mouse max-scroll-amount="30%"
 }
 
 //LAYOUT
 layout {
-    gaps 4
+    gaps 2
 
     preset-column-widths {
         proportion 0.33333
@@ -37,23 +37,24 @@ layout {
 
     focus-ring {
         off
-        width 3
+        width 1
         active-color "#a9b9c5"
         inactive-color "#97a4aa"
     }
 
     border {
-        width 2
+        width 1
         active-color "#a9b9c5"
         inactive-color "#424853"
     }
 }
 
 // SPAWN 
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
+spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "nm-applet"
-spawn-at-startup "hypridle"
-spawn-at-startup "swaybg -i .config/wallpapers/arch.png "
+// spawn-at-startup "hypridle"
+// spawn-at-startup "swaybg -i .config/wallpapers/iss.jpg"
 
 // MISC
 hotkey-overlay {
@@ -88,24 +89,32 @@ window-rule {
 }
 
 window-rule {
-    geometry-corner-radius 5
+    geometry-corner-radius 2
     clip-to-geometry true
     draw-border-with-background false
+}
+
+// LAYER RULES
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
 }
 
 // BINDS
 binds {
     // MISC
-    Mod+Shift+7         { show-hotkey-overlay; }
-    Mod+O repeat=false  { toggle-overview; }
-    Mod+W repeat=false  { close-window; }
-    Alt+Tab             { focus-workspace-previous; }
+    Mod+Shift+7             { show-hotkey-overlay; }
+    Mod+O   repeat=false    { toggle-overview; }
+    Mod+W   repeat=false    { close-window; }
+    Alt+Tab repeat=false    { focus-workspace-previous; }
 
     // APPLICATIONS
     Mod+Return  { spawn "kitty"; }
-    Mod+Space   { spawn-sh "wofi --show drun -i"; }
+    // Mod+Space   { spawn-sh "wofi --show drun -i"; }
+    Mod+Space   { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Mod+Shift+T { spawn-sh "~/.config/niri/ocr.sh"; }
-    Mod+L       { spawn-sh "~/.config/wofi/power-menu.sh"; }
+    // Mod+L       { spawn-sh "~/.config/wofi/power-menu.sh"; }
+    Mod+L       { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+Y       { spawn "hyprlock"; }
     Mod+E       { spawn "nautilus"; }
 
@@ -180,6 +189,9 @@ binds {
 
     // Fit all windows in current workspace to equal widths
     Mod+Q   { spawn-sh "~/.config/niri/fit-all-windows.sh"; }
+
+    // Move browser tab to window left
+    Mod+Z   { spawn-sh "~/.config/niri/move-tab.sh"; }
 
     // Move windows in and out of a column.
     Mod+Comma           { consume-or-expel-window-left; }

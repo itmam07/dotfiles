@@ -68,7 +68,7 @@ alias path="echo -e ${PATH}"
 alias diskusage="free -m -l -t"
 alias inet="ip -c -br -f inet a | grep UP"
 alias startdocker="systemctl start docker"
-alias windows="cd ~/windows && docker-compose up -d && sleep 2 && nohup remmina -c ~/.local/share/remmina/group_rdp_windows_127-0-0-1.remmina > /dev/null 2>&1 &"
+alias windows="cd ~/windows && docker-compose up -d && sleep 5 && nohup remmina -c ~/.local/share/remmina/group_rdp_windows_127-0-0-1.remmina > /dev/null 2>&1 &"
 
 eval "$(starship init zsh)"
 
