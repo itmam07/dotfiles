@@ -2,11 +2,11 @@
 
 ### Niri
 
-![niri](https://github.com/itmam07/dotfiles/blob/8a92f39ddeaece2f2ace8aa6cc06db5337433d7a/niri.png)
+![niri](https://github.com/itmam07/dotfiles/blob/d51dc44812ee1ec0ad17cd5717e574b4f580c39a/niri.png)
 
 ### Hypr Arch
 
-![hypr-arch](https://github.com/itmam07/dotfiles/blob/8a92f39ddeaece2f2ace8aa6cc06db5337433d7a/hypr.png)
+![hypr-arch](https://github.com/itmam07/dotfiles/blob/d51dc44812ee1ec0ad17cd5717e574b4f580c39a/hypr.png)
 
 ### Installation
 
